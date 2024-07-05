@@ -27,7 +27,14 @@ variable "availability_zone" {
 }
 
 variable "vpc-cidr_block" {
-    description = "provide a cidr_block for this vpc"
+    description = "provide a cidr_block for this private-SN"
+    type = string
+    default = "10.0.0.0/24"
+  
+}
+
+variable "priv-SN-cidr_block" {
+    description = "provide a cidr_block for this private-SN"
     type = string
     default = "10.0.1.0/24"
   
