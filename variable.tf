@@ -15,13 +15,20 @@ variable "instance_type" {
 variable "key_name" {
     description = "provide a key name"
     type = string
-    default = "postgres"
+    default = "postgress"
   
 }
 
 variable "availability_zone" {
     description = "provide availability zone"
     type = string
-    default = "us-east-1a"
+    default = "us-east-1b"
+  
+}
+
+variable "vpc-cidr_block" {
+    description = "provide a cidr_block for this vpc"
+    type = string
+    default = "10.0.1.0/24"
   
 }
