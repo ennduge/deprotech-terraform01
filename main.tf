@@ -26,7 +26,7 @@ resource "aws_vpc" "deprotech-vpc" {
 
 resource "aws_subnet" "deprotech-priv-SN" {
   vpc_id     = aws_vpc.deprotech-vpc.id
-  cidr_block = var.vpc-cidr_block
+  cidr_block = var.priv-SN-cidr_block
 
   tags = {
     Name = "deprotech-priv-SN"
