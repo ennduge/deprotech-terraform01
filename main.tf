@@ -15,7 +15,7 @@ resource "aws_instance" "deprotech" {
 ##################################################################
 
 resource "aws_vpc" "deprotech-vpc" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.vpc-cidr_block
   instance_tenancy = "default"
 
   tags = {
