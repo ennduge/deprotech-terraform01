@@ -35,7 +35,7 @@ resource "aws_subnet" "deprotech-priv-SN" {
 
 resource "aws_subnet" "deprotech-pub-SN" {
   vpc_id     = aws_vpc.deprotech-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.deprotech-pub-cidr_block
 
   tags = {
     Name = "deprotech-pub-SN"
@@ -46,7 +46,7 @@ resource "aws_route_table" "deprotech-Public-RT" {
   vpc_id = aws_vpc.deprotech-vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.deprotech-public-RT
     gateway_id = aws_internet_gateway.deprotech-IGW.id
   }
 
@@ -59,7 +59,7 @@ resource "aws_route_table" "deprotech-Private-RT" {
   vpc_id = aws_vpc.deprotech-vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.deprotech-private-RT
     gateway_id = aws_nat_gateway.deprotech-NGW.id
   }
 
@@ -88,7 +88,7 @@ resource "aws_internet_gateway" "deprotech-IGW" {
 
 resource "aws_nat_gateway" "deprotech-NGW" {
   #allocation_id = aws_eip.deprotech-NAT.id
-  subnet_id     = aws_subnet.deprotech-priv-SN.id
+  subnet_id = aws_subnet.deprotech-priv-SN.id
 }
 /*
   resource "aws_eip" "deprotech-NAT" { 
